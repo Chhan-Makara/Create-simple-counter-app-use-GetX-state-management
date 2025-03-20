@@ -14,9 +14,22 @@ class MyApp extends StatelessWidget {
   }
 }
 
+// ✅ Create a Controller for State Management
+class CounterController extends GetxController {
+  var index = 0.obs;
+
+  void increment() => index++;
+  void decrement() {
+    if (index > 0) index--; // Prevent negative values
+  }
+}
+
+// ✅ Use the Controller in UI
 class Counter extends StatelessWidget {
   Counter({super.key});
-  var index = 0.obs;
+
+  // GetX automatically stores this controller
+  final CounterController controller = Get.put(CounterController());
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +47,7 @@ class Counter extends StatelessWidget {
             ),
             Obx(
               () => Text(
-                "$index",
+                "${controller.index}",
                 style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
               ),
             ),
@@ -46,16 +59,12 @@ class Counter extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           FloatingActionButton(
-            onPressed: () {
-              if (index > 0) index--; //prevent negative values
-            },
+            onPressed: controller.decrement,
             child: Icon(Icons.remove),
             backgroundColor: Colors.red,
           ),
           FloatingActionButton(
-            onPressed: () {
-              index++;
-            },
+            onPressed: controller.increment,
             child: Icon(Icons.add),
             backgroundColor: Colors.blue,
           ),
