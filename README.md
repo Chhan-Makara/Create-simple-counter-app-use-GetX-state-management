@@ -1,5 +1,13 @@
 #getx_state_management
 
+ What is GetX?
+GetX is a simple state management package in Flutter that helps manage UI updates and app logic without too much boilerplate code.
+
+ Why use GetX?
+✅ No need to use setState()
+✅ Less code, easier to manage
+✅ Comes with navigation & dependency injection
+
 ![image](https://github.com/user-attachments/assets/1a29ec9f-3455-44bf-a807-ba3f7092181b)
 ![image](https://github.com/user-attachments/assets/d75a889f-57ab-4ea6-8e73-892613238b63)
 ![image](https://github.com/user-attachments/assets/3c7dbde8-5f15-4129-b959-7b0c0a0e122a)
